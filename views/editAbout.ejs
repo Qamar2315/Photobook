@@ -1,0 +1,10 @@
+<% layout('/layouts/boilerplate') %> 
+<div>
+    <form action="/profile/<%=currentUser.id%>?_method=PUT" method="post">
+        <h1 class="text-3xl font-medium mt-20"><%= currentUser.name %> </h1>
+        <label for="description" class="block mb-2 text-lg font-serif mt-5">About me:</label>
+        <textarea id="description" name="description" cols="30" rows="3" placeholder="Add a attractive about in your profile..."
+        class="w-full font-serif mt-3  p-2 text-gray-600 bg-indigo-50 outline-none rounded-md"></textarea>
+        <button class="w-full py-2 px-4 bg-transparent text-red-600 font-semibold border border-red-600 rounded hover:bg-red-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0 mt-5">Update About</button>
+    </form>
+</div>

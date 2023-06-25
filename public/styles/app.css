@@ -1,0 +1,118 @@
+body{
+    background-color: #eceff162;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+input{
+    border: solid black 1px;
+    border-radius: 20px;
+    margin-right: 2px;
+}
+.navItem{
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.post{
+    width: 50vw;
+    height: 40vh;
+}
+.postImg{
+    width: 50vw;
+    height: 50vh;
+}
+.logo{
+    border-radius: 50%;
+    background-color: antiquewhite;
+    width: 50px;
+    height: 50px;
+}
+.controlBox{
+    display: flex;
+    justify-content: space-between;
+}
+.footer{
+    width: 100vw;
+    background-color: black;
+    color: aliceblue;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 5px;
+}
+.button{
+    border-radius: 10px;
+    width: 100px;
+    color: aliceblue;
+    background-color: rgb(0, 83, 56);
+    border: 1px solid blue;
+}
+.button:hover{
+    color: black;
+    background-color: aquamarine;
+    transition: 0.4s;
+}
+.liked{
+    color:white;
+    background-color: green;
+}
+.disliked{
+    color:white;
+    background-color: red;
+}
+.postPageContainer{
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+}
+.alignTwo{
+    display: flex;
+    justify-content: left;
+}
+.twoBtn{
+    display: flex;
+    justify-content: space-between;
+}
+.commentSec{
+    display: flex;
+    flex-direction: column;
+}
+.doComment{
+    display: flex;
+    justify-content:center;
+    margin: 3px;
+}
+.message{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 15vw;
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid black;
+}
+.success{
+    color: green;
+    border-color: rgb(0, 128, 0);
+    background-color: rgba(0, 128, 0, 0.199);
+}
+.error{
+    color: red;
+    border-color: rgb(104, 0, 0);
+    background-color: rgba(128, 0, 0, 0.377);
+}
+.btn{
+    color:black;
+    border: 0px;
+    background-color: transparent;
+}
+#flash{
+    transition: visibility 0s, opacity 0.5s linear;
+}

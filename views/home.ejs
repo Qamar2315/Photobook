@@ -1,0 +1,75 @@
+<% layout('/layouts/boilerplate') %>
+<div class="w-full flex-column">
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .round {
+      border-radius: 50%;
+    }
+  </style>
+
+  <div class="w-full flex justify-center mt-4">
+    <form action="/home" method="post" enctype="multipart/form-data">
+      <div>
+        <h1 class="text-2xl font-medium">Create Post <%= currentUser.name %> </h1>
+        <label for="description" class="block mb-2 text-lg font-serif mt-2">Description:</label>
+        <textarea id="description" name="description" cols="30" rows="3" placeholder="what is in your mind..."
+          class="w-full font-serif  p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"></textarea>
+      </div>
+      <div class="border border-dashed border-gray-500 relative">
+        <label for="image"></label>
+        <input type="file" class="cursor-pointer relative block opacity-0 w-full h-10 p-20 z-50" id="image"
+          name="image" accept="image/*">
+        <div class="text-center p-10 absolute top-0 right-0 left-0 m-auto">
+          <h4>
+            Drop image anywhere to upload
+            <br />or
+          </h4>
+          <p>Upload Image</p>
+        </div>
+      </div>
+      <div class="flex flex-row justify-center">
+        <button class="mt-2 group relative h-12 w-48 overflow-hidden rounded-lg bg-white text-lg shadow">
+          <div class="absolute inset-0 w-3 bg-amber-400 transition-all duration-[250ms] ease-out group-hover:w-full">
+          </div>
+          <span class="relative text-black group-hover:text-white">Upload Post!</span>
+        </button>
+      </div>
+    </form>
+  </div>
+
+<% for(let post of posts){ %> 
+    <div class="w-full flex justify-center mt-16">
+        <div class="bg-white">  
+            <div class="flex flex-row mb-3">
+                <img class="round border border-indigo-100 shadow-lg" src="/uploads/<%= post.user.profilePicture %>" alt="" width="50px" height="50px">
+                <a href="/profile/<%= post.user.id%>"> <h1 class="mt-5 ml-3 text-xl font-medium"><%= post.user.name %></h1></a>
+            </div>
+
+            <div class="bg-white border shadow p-5 flex flex-col items-start text-xl text-gray-700 font-semibold">
+                <p class="text-left"><%= post.description %></p>
+                <img class="border rounded-t-lg shadow-lg mt-3"src="\uploads\<%= post.photo%>" width="700px" alt="">
+            </div>
+
+            <div class="bg-white p-1 border shadow flex flex-row flex-wrap">
+                <% isLiked=false %> 
+                <% post.likes.filter((element)=>{if(element.name=== currentUser.name){isLiked=true}})%>
+                <form class="w-1/3 <%= isLiked ? "hover:bg-green-200 bg-green-100 text-green-700" : "hover:bg-gray-200 text-gray-700"%> text-center text-xl  font-semibold" action="/<%=post.id%>/like" method="post">
+                    <button >Like <%= post.likes.length %></button>
+                </form>
+
+                <a class="w-1/3 hover:bg-gray-200 border-l-4 text-center text-xl text-gray-700 font-semibold" href="/postPage/<%= post.id  %>">
+                    <div >Comments <%= post.comments.length %></div>
+                </a>
+
+                <% isDisLiked=false %>
+                <% post.dislikes.filter((element)=>{if(element.name=== currentUser.name){isDisLiked=true}})%> 
+                <form class="w-1/3 <%= isDisLiked ? "hover:bg-red-200 bg-red-100 text-red-700" : "hover:bg-gray-200 text-gray-700"%>  border-l-4 border-r- text-center text-xl font-semibold" action="/<%=post.id%>/dislike" method="post">
+                    <button> Dislike <%= post.dislikes.length %></button>
+                </form>
+            </div>
+          </div>
+    </div>
+<% } %> 
+</div>
+<div class="h-20"></div>

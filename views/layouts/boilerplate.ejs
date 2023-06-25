@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/app.css">
+    <link rel="stylesheet" href="/styles/output.css">
+    <link rel="icon" href="\media\2022-11-03.png" type="image/icon type">
+    <title> PhotoBook</title>
+</head>
+<body>
+    <%- include('../partials/navbar')  %> 
+    <div class="container">
+        <%- include('../partials/flash')  %> 
+        <%- body -%>
+    </div>
+    <%- include('../partials/footer') %> 
+    <script src="/scripts/app.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>

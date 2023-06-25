@@ -1,0 +1,16 @@
+<% layout('/layouts/boilerplate') %>
+<h1 class="text-3xl font-medium mt-12">Upload your profile <%= currentUser.name %></h1>
+<form class="mt-12" action="/profile/<%=currentUser.id%>" method="post" enctype="multipart/form-data">
+    <div class="border border-dashed border-gray-500 relative">
+        <label for="image">Upload Profile: </label>
+        <input type="file" id="image" name="image" accept="image/*" class="cursor-pointer relative block opacity-0 w-full h-full p-20 z-50">
+        <div class="text-center p-10 absolute top-0 right-0 left-0 m-auto">
+            <h4>
+                Drop image anywhere to upload
+                <br/>or
+            </h4>
+            <p class="">Select Image</p>
+        </div>
+    </div>
+    <button class="w-full py-2 px-4 bg-transparent text-red-600 font-semibold border border-red-600 rounded hover:bg-red-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0 mt-5">Upload</button>
+</form>

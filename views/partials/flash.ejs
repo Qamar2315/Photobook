@@ -1,0 +1,20 @@
+<% if(success && success.length){ %>
+  <div id="flash" class='flex flex-row bg-gray-900 h-10 w-[400px] rounded-[30px] mt-10'>
+    <span class='flex flex-col justify-center text-white font-bold grow-[1] max-w-[90%] text-center'><%= success %> </span>
+    <div class='w-[10%] bg-green-400 rounded-r-2xl shadow-[0_0_20px_#00C85177]'><a href=""><p id="message" class="ml-3 mt-2 text-green-900">X</p></a></div>
+  </div>
+<% } %>  
+
+<% if(error && error.length){ %>
+  <div id="flash" class='flex flex-row bg-gray-900 h-10 w-[400px] rounded-[30px] mt-10'>
+    <span class='flex flex-col justify-center text-white font-bold grow-[1] max-w-[90%] text-center'><%= error %> </span>
+    <div class='w-[10%] bg-red-400 rounded-r-2xl shadow-[0_0_20px_#ff444477]'><a href=""><p id="message" class="ml-3 mt-2 text-red-900">X</p></a></div>
+  </div>
+<% } %>
+
+<% if(info && info.length){ %>
+  <div id="flash" class='flex flex-row bg-gray-900 h-10 w-[400px] rounded-[30px] mt-10'>
+    <span class='flex flex-col justify-center text-white font-bold grow-[1] max-w-[90%] text-center'><%= info %> </span>
+    <div class='w-[10%] bg-yellow-400 rounded-r-2xl shadow-[0_0_20px_#ffbb3377]'><a href=""><p id="message" class="ml-3 mt-2 text-red-900">X</p></a></div>
+  </div>
+<% } %>

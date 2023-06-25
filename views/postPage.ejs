@@ -1,0 +1,77 @@
+<% layout('/layouts/boilerplate') %> 
+<section class="flex flex-row">
+    <div class="flex flex-col items-center mr-28 mt-10">
+        <h1 class="mt-5 ml-3 text-xl font-medium mb-5">Liked By:</h1>
+        <% for(let like of post.likes){ %> 
+            <li class="list-none"><a href="/profile/<%= like.id %>"><%= like.name %> </a></li>
+        <% } %>
+    </div>
+
+    <div class="ml-24 mt-5">
+        <div class="w-full flex justify-center mt-5">
+            <div class="bg-white">
+              <div class="flex flex-row mb-3">
+                <img class="rounded-l-full rounded-r-full border border-indigo-100 shadow-lg" src="/uploads/<%= post.user.profilePicture %>" alt="" width="80px" height="100px">
+                 <a href="/profile/<%= post.user.id %>">
+                     <h1 class="mt-5 ml-3 text-xl font-medium"><%=post.user.name%></h1>
+                 </a>
+              </div>
+              <div class="w-3/4 bg-white border shadow p-5 flex flex-col items-center text-xl text-gray-700 font-semibold">
+                <p class="text-left"><%= post.description %></p>
+                <img class="border rounded-t-lg shadow-lg mt-3" src="/uploads/<%= post.user.profilePicture %>" width="500px" alt="">
+              </div>
+              <div class="bg-white p-1 border shadow flex flex-row flex-wrap">
+                    <% isLiked=false %> 
+                    <% post.likes.filter((element)=>{if(element.name=== currentUser.name){isLiked=true}})%>
+                    <form class="w-1/3 <%= isLiked ? "hover:bg-green-200 bg-green-100 text-green-700" : "hover:bg-gray-200 text-gray-700"%> text-center text-xl  font-semibold" action="/<%=post.id%>/like/home" method="post">
+                        <button >Like <%= post.likes.length %></button>
+                    </form>
+
+                    <a class="w-1/3 hover:bg-gray-200 border-l-4 text-center text-xl text-gray-700 font-semibold" href="/postPage/<%= post.id  %>">
+                        <div >Comment <%= post.comments.length %></div>
+                    </a>
+
+                    <% isDisLiked=false %>
+                    <% post.dislikes.filter((element)=>{if(element.name=== currentUser.name){isDisLiked=true}})%> 
+                    <form class="w-1/3 <%= isDisLiked ? "hover:bg-red-200 text-red-700 bg-red-100" : "hover:bg-gray-200 text-gray-700"%>  border-l-4 border-r- text-center text-xl font-semibold" action="/<%=post.id%>/dislike/home" method="post">
+                        <button> Dislike <%= post.dislikes.length %></button>
+                    </form>
+                </div>
+            </div>
+          </div>
+        <div class="w-full overflow-x-auto h-56">
+            <% for(let comment of post.comments){ %>
+                <li class="list-none mt-4">
+                    <div class="flex flex-row mb-3">
+                        <img class="rounded-l-full rounded-r-full border border-indigo-100 shadow-lg" src="/uploads/<%=comment.author.profilePicture%>" alt="" width="40px">
+                        <a href="/profile/<%= comment.author.id %>">
+                            <h1 class="ml-3 mt-1 text-xl font-medium"><%= comment.author.name %></h1>
+                        </a>
+                    </div>
+                    <div class="bg-gray-100 w-auto rounded-xl p-3">
+                        <p class="ml-5 text-gray-700 font-semibold">
+                            <%= comment.comment  %> 
+                        </p>
+                    </div>
+                    <% if(comment.author.name === currentUser.name){%>
+                        <form action="/<%=post.id%>/comment/<%=comment.id%>/delete?_method=DELETE" method="post">
+                            <button type="submit" class="text-white mt-2 bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">delete</button>
+                        </form>
+                    <% } %>
+                </li>
+            <% } %> 
+        </div>
+        <form action="/comment/<%=post.id%>/add" class="flex justify-around w-3/4 mt-5" method="post">
+            <label for="comment"></label>
+            <input class="block w-4/5 mt-1 rounded" type="text" name="comment" placeholder="Whats in your mind...">
+            <button  class="px-3 py-2 text-sm text-blue-100 bg-blue-600 rounded">comment</button>
+        </form>
+    </div>
+    <div class="flex flex-col items-center mt-8">
+        <h1 class="mt-5 ml-3 text-xl font-medium mb-5">Disliked By:</h1>
+        <% for(let dislike of post.dislikes){ %> 
+            <li class="list-none"><a href="/profile/<%= dislike.id %>"> <%= dislike.name %> </a></li>
+        <% } %>
+    </div>
+</section>
+<section class="mt-20"></section>
