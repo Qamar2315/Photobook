@@ -40,7 +40,7 @@ Contributions are welcome! If you would like to contribute to SocialHub, please 
 
 This project is licensed under the [MIT License](LICENSE).
 
-Feel free to explore, modify, and distribute SocialHub according to the terms of the license. Your contributions and enhancements are highly appreciated!
+Feel free to explore, modify, and distribute Photobook according to the terms of the license. Your contributions and enhancements are highly appreciated!
 
 ## Contact
 
